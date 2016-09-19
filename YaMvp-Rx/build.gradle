@@ -1,0 +1,32 @@
+apply plugin: 'com.android.library'
+apply plugin: 'jacoco-android'
+apply from: "https://raw.githubusercontent.com/Piasy/BintrayUploadScript/master/bintray.gradle"
+
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.releaseVersionCode
+        versionName rootProject.ext.releaseVersionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile project(':YaMvp')
+    compile "io.reactivex:rxjava:$rootProject.ext.rxjavaVersion"
+    compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
+
+    testCompile "junit:junit:$rootProject.ext.junitVersion"
+    testCompile "com.google.truth:truth:$rootProject.ext.truthVersion"
+}

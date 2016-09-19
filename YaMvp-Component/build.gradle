@@ -1,0 +1,39 @@
+apply plugin: 'com.android.library'
+apply plugin: 'jacoco-android'
+apply from: "https://raw.githubusercontent.com/Piasy/BintrayUploadScript/master/bintray.gradle"
+
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.releaseVersionCode
+        versionName rootProject.ext.releaseVersionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile "com.android.support:support-fragment:$rootProject.ext.androidSupportSdkVersion"
+    compile project(':YaMvp')
+
+    androidTestCompile "com.android.support:appcompat-v7:$rootProject.ext.androidSupportSdkVersion"
+    androidTestCompile "junit:junit:$rootProject.ext.junitVersion"
+    androidTestCompile "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"
+    androidTestCompile "com.github.crittercism.dexmaker:dexmaker-mockito:$rootProject.ext.dexMakerVersion"
+    androidTestCompile "com.android.support.test:rules:$rootProject.ext.testSupportLibVersion"
+    androidTestCompile "com.android.support.test:runner:$rootProject.ext.testSupportLibVersion"
+    androidTestCompile "com.azimolabs.conditionwatcher:conditionwatcher:$rootProject.ext.conditionWatcherVersion"
+}

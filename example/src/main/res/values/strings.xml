@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">YaMvpExample</string>
+
+    <string name="invalid_phone_number">invalid phone number</string>
+    <string name="valid_phone_number">valid phone number</string>
+    <string name="input_phone_number">Input phone number</string>
+</resources>

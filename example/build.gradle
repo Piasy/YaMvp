@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+apply plugin: 'jacoco-android'
+
+def isTravis = "true".equals(System.getenv("TRAVIS"))
+
+android {
+    compileSdkVersion rootProject.ext.androidCompileSdkVersion
+    buildToolsVersion rootProject.ext.androidBuildToolsVersion
+    defaultConfig {
+        applicationId "com.github.piasy.yamvp.example"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.releaseVersionCode
+        versionName rootProject.ext.releaseVersionName
+        testInstrumentationRunner "com.github.piasy.yamvp.example.TestRunner"
+
+        buildConfigField "int", "TEST_WAIT_BEFORE_VERIFY", isTravis ? "1000" : "50"
+    }
+    buildTypes {
+        debug {
+            testCoverageEnabled true
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    compile project(':YaMvp-Dagger2')
+    compile project(':YaMvp-Rx')
+    apt "com.google.dagger:dagger-compiler:$rootProject.ext.daggerVersion"
+    compile 'com.googlecode.libphonenumber:libphonenumber:7.0.6'
+    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+    compile 'com.jakewharton:butterknife:8.4.0'
+    apt "com.jakewharton:butterknife-compiler:8.4.0"
+
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion") {
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude module: 'jsr305'
+    }
+    androidTestCompile "com.azimolabs.conditionwatcher:conditionwatcher:$rootProject.ext.conditionWatcherVersion"
+}
