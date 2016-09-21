@@ -13,7 +13,7 @@ public abstract class YaMvpDiFragment<V extends YaView, P extends YaPresenter<V>
         BaseComponent<V, P>>
         extends YaMvpFragment<V, P> {
 
-    private P mPresenter;
+    protected P mPresenter;
 
     @SuppressWarnings("unchecked")
     @Override
