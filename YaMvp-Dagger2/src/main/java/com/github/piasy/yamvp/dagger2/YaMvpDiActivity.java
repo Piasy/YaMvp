@@ -14,8 +14,8 @@ public abstract class YaMvpDiActivity<V extends YaView, P extends YaPresenter<V>
         extends AppCompatActivity implements HasComponent<C> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
         initializeDi();
+        super.onCreate(savedInstanceState);
     }
 
     protected abstract void initializeDi();

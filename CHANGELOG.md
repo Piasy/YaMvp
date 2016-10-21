@@ -1,4 +1,6 @@
 # Change log
 
++ v1.1.0
+  - Fix NPE during activity recreation, e.g. configuration changes, activity killed by system.
 + v1.0.1
   - `YaMvpDiFragment`: change `mPresenter` from `private` into `protected`.

@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0'
+        classpath 'com.android.tools.build:gradle:2.2.2'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'me.tatarka:gradle-retrolambda:3.2.5'
         classpath 'me.tatarka.retrolambda.projectlombok:lombok.ast:0.2.3.a2'
@@ -41,20 +41,21 @@ ext {
     artifactName = 'YaMvp'
     artifactDescription = 'Yet another Mvp library. Super simple, but with enough functionality.'
     artifactLabels = ['MVP', 'RxJava', 'RxBinding', 'ButterKnife']
-    releaseVersionCode = 2
-    releaseVersionName = '1.0.1'
+    releaseVersionCode = 3
+    releaseVersionName = '1.1.0'
 
     androidCompileSdkVersion = 24
     androidBuildToolsVersion = '24.0.2'
-    androidSupportSdkVersion = '24.2.0'
+    androidSupportSdkVersion = '24.2.1'
     minSdkVersion = 16
     targetSdkVersion = 24
 
     junitVersion = '4.12'
-    //'2.1.0-RC.1' fail with
+    //'2.2.6' still fail with
     // java.lang.AbstractMethodError:
     //      abstract method "org.mockito.plugins.MockMaker$TypeMockability
     //      org.mockito.plugins.MockMaker.isTypeMockable(java.lang.Class)"
+    //mockitoVersion = '2.2.6'
     mockitoVersion = '1.10.19'
     dexMakerVersion = 'f8e7c23e4172af8767758c99c9165dd2bd4f0e7f'
     truthVersion = '0.30'

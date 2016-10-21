@@ -12,6 +12,7 @@ public abstract class YaViewDelegate<V extends YaView, P extends YaPresenter<V>>
 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         mPresenter = createPresenter();
+        checkPresenter();
     }
 
     public void onStart(V view) {
@@ -33,7 +34,9 @@ public abstract class YaViewDelegate<V extends YaView, P extends YaPresenter<V>>
 
     private void checkPresenter() {
         if (mPresenter == null) {
-            throw new IllegalStateException("call onCreate in YaViewDelegate!");
+            throw new IllegalStateException(
+                    "You must call YaViewDelegate#onCreate! And createPresenter must return "
+                    + "non-null");
         }
     }
 }
