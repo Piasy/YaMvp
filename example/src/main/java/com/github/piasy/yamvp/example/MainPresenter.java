@@ -5,9 +5,9 @@ import com.github.piasy.yamvp.rx.YaRxPresenter;
 import com.google.i18n.phonenumbers.NumberParseException;
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import javax.inject.Inject;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by Piasy{github.com/Piasy} on 17/09/2016.
@@ -42,9 +42,9 @@ class MainPresenter extends YaRxPresenter<MainView> {
             Phonenumber.PhoneNumber phoneNumber = phoneNumberUtil.parse(phone, "+86");
             if (phoneNumberUtil.isValidNumber(phoneNumber) && (
                     phoneNumberUtil.getNumberType(phoneNumber)
-                            == PhoneNumberUtil.PhoneNumberType.MOBILE
-                            || phoneNumberUtil.getNumberType(phoneNumber)
-                            == PhoneNumberUtil.PhoneNumberType.FIXED_LINE_OR_MOBILE)) {
+                    == PhoneNumberUtil.PhoneNumberType.MOBILE
+                    || phoneNumberUtil.getNumberType(phoneNumber)
+                       == PhoneNumberUtil.PhoneNumberType.FIXED_LINE_OR_MOBILE)) {
                 return phoneNumberUtil.format(phoneNumber, PhoneNumberUtil.PhoneNumberFormat.E164);
             } else {
                 return "";

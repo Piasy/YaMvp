@@ -13,13 +13,19 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.github.piasy.yamvp.dagger2.YaMvpDiFragment;
 import com.jakewharton.rxbinding.widget.RxTextView;
-import rx.Observable;
+import hu.akarnokd.rxjava.interop.RxJavaInterop;
+import io.reactivex.Flowable;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MainFragment extends YaMvpDiFragment<MainView, MainPresenter, MainComponent>
         implements MainView {
+
+    @BindView(R.id.mEtPhone)
+    EditText mEtPhone;
+    @BindView(R.id.mVerifyResult)
+    TextView mVerifyResult;
 
     public MainFragment() {
         // Required empty public constructor
@@ -30,6 +36,11 @@ public class MainFragment extends YaMvpDiFragment<MainView, MainPresenter, MainC
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
         Log.d("RetainInstance", "MainFragment#onCreate");
+    }
+
+    @Override
+    protected void injectDependencies(MainComponent component) {
+        component.inject(this);
     }
 
     @Override
@@ -51,18 +62,8 @@ public class MainFragment extends YaMvpDiFragment<MainView, MainPresenter, MainC
     }
 
     @Override
-    protected void injectDependencies(MainComponent component) {
-        component.inject(this);
-    }
-
-    @BindView(R.id.mEtPhone)
-    EditText mEtPhone;
-    @BindView(R.id.mVerifyResult)
-    TextView mVerifyResult;
-
-    @Override
-    public Observable<CharSequence> phoneNumberChanges() {
-        return RxTextView.textChanges(mEtPhone);
+    public Flowable<CharSequence> phoneNumberChanges() {
+        return RxJavaInterop.toV2Flowable(RxTextView.textChanges(mEtPhone));
     }
 
     @Override

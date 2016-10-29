@@ -7,7 +7,7 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.2.2'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
-        classpath 'me.tatarka:gradle-retrolambda:3.2.5'
+        classpath 'me.tatarka:gradle-retrolambda:3.3.0'
         classpath 'me.tatarka.retrolambda.projectlombok:lombok.ast:0.2.3.a2'
 
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.1'
@@ -44,12 +44,12 @@ ext {
     artifactName = 'YaMvp'
     artifactDescription = 'Yet another Mvp library. Super simple, but with enough functionality.'
     artifactLabels = ['MVP', 'RxJava', 'RxBinding', 'ButterKnife']
-    releaseVersionCode = 3
-    releaseVersionName = '1.1.0'
+    releaseVersionCode = 4
+    releaseVersionName = '1.2.0'
 
-    androidCompileSdkVersion = 24
-    androidBuildToolsVersion = '24.0.2'
-    androidSupportSdkVersion = '24.2.1'
+    androidCompileSdkVersion = 25
+    androidBuildToolsVersion = '25.0.0'
+    androidSupportSdkVersion = '25.0.0'
     minSdkVersion = 16
     targetSdkVersion = 24
 
@@ -61,6 +61,7 @@ ext {
     testSupportLibVersion = '0.5'
     conditionWatcherVersion = '0.1'
 
-    rxjavaVersion = '1.1.10'
+    rxjavaVersion = '1.2.1'
+    rxjava2Version = '2.0.0'
     daggerVersion = '2.6.1'
 }

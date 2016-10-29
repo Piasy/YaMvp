@@ -1,10 +1,10 @@
 package com.github.piasy.yamvp.rx;
 
+import io.reactivex.Flowable;
+import io.reactivex.disposables.Disposable;
 import java.util.concurrent.TimeUnit;
 import org.junit.Before;
 import org.junit.Test;
-import rx.Observable;
-import rx.Subscription;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -13,12 +13,12 @@ import static com.google.common.truth.Truth.assertThat;
  */
 public class YaRxDelegateTest {
     private YaRxDelegate mYaRxDelegate;
-    private Subscription mSubscription;
+    private Disposable mDisposable;
 
     @Before
     public void setUp() throws Exception {
         mYaRxDelegate = new YaRxDelegate();
-        mSubscription = Observable.interval(1, TimeUnit.SECONDS)
+        mDisposable = Flowable.interval(1, TimeUnit.SECONDS)
                 .subscribe();
     }
 
@@ -26,41 +26,41 @@ public class YaRxDelegateTest {
     public void addUtilStop() throws Exception {
         mYaRxDelegate.onCreate();
         mYaRxDelegate.onStart();
-        mYaRxDelegate.addUtilStop(mSubscription);
-        assertThat(mSubscription.isUnsubscribed()).isFalse();
+        mYaRxDelegate.addUtilStop(mDisposable);
+        assertThat(mDisposable.isDisposed()).isFalse();
         mYaRxDelegate.onStop();
-        assertThat(mSubscription.isUnsubscribed()).isTrue();
+        assertThat(mDisposable.isDisposed()).isTrue();
     }
 
     @Test
     public void addUtilDestroy() throws Exception {
         mYaRxDelegate.onCreate();
         mYaRxDelegate.onStart();
-        mYaRxDelegate.addUtilDestroy(mSubscription);
-        assertThat(mSubscription.isUnsubscribed()).isFalse();
+        mYaRxDelegate.addUtilDestroy(mDisposable);
+        assertThat(mDisposable.isDisposed()).isFalse();
         mYaRxDelegate.onDestroy();
-        assertThat(mSubscription.isUnsubscribed()).isTrue();
+        assertThat(mDisposable.isDisposed()).isTrue();
     }
 
     @Test
     public void addUtilDestroy_stop_not_unsubscribe() throws Exception {
         mYaRxDelegate.onCreate();
         mYaRxDelegate.onStart();
-        mYaRxDelegate.addUtilDestroy(mSubscription);
-        assertThat(mSubscription.isUnsubscribed()).isFalse();
+        mYaRxDelegate.addUtilDestroy(mDisposable);
+        assertThat(mDisposable.isDisposed()).isFalse();
         mYaRxDelegate.onStop();
-        assertThat(mSubscription.isUnsubscribed()).isFalse();
+        assertThat(mDisposable.isDisposed()).isFalse();
     }
 
     @Test
     public void remove() throws Exception {
         mYaRxDelegate.onCreate();
         mYaRxDelegate.onStart();
-        mYaRxDelegate.addUtilStop(mSubscription);
-        assertThat(mSubscription.isUnsubscribed()).isFalse();
-        mYaRxDelegate.remove(mSubscription);
+        mYaRxDelegate.addUtilStop(mDisposable);
+        assertThat(mDisposable.isDisposed()).isFalse();
+        mYaRxDelegate.remove(mDisposable);
         mYaRxDelegate.onStop();
-        assertThat(mSubscription.isUnsubscribed()).isTrue();
+        assertThat(mDisposable.isDisposed()).isTrue();
     }
 
     @Test

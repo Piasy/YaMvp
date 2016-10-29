@@ -2,6 +2,7 @@ package com.github.piasy.yamvp.rx;
 
 import com.github.piasy.yamvp.YaPresenter;
 import com.github.piasy.yamvp.YaView;
+import io.reactivex.disposables.Disposable;
 import rx.Subscription;
 
 /**
@@ -27,6 +28,18 @@ public abstract class YaRxPresenter<V extends YaView> extends YaPresenter<V> {
 
     public void remove(Subscription subscription) {
         mYaRxDelegate.remove(subscription);
+    }
+
+    protected boolean addUtilStop(Disposable disposable) {
+        return mYaRxDelegate.addUtilStop(disposable);
+    }
+
+    public boolean addUtilDestroy(Disposable disposable) {
+        return mYaRxDelegate.addUtilDestroy(disposable);
+    }
+
+    public void remove(Disposable disposable) {
+        mYaRxDelegate.remove(disposable);
     }
 
     @Override

@@ -1,10 +1,10 @@
 package com.github.piasy.yamvp.rx;
 
+import io.reactivex.Flowable;
+import io.reactivex.disposables.Disposable;
 import java.util.concurrent.TimeUnit;
 import org.junit.Before;
 import org.junit.Test;
-import rx.Observable;
-import rx.Subscription;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -15,43 +15,43 @@ public class YaRxPresenterTest {
 
     private TestRxPresenter mTestRxPresenter;
     private TestView mTestView;
-    private Subscription mSubscription;
+    private Disposable mDisposable;
 
     @Before
     public void setUp() throws Exception {
         mTestRxPresenter = new TestRxPresenter();
         mTestView = new TestView() {
         };
-        mSubscription = Observable.interval(1, TimeUnit.SECONDS)
+        mDisposable = Flowable.interval(1, TimeUnit.SECONDS)
                 .subscribe();
     }
 
     @Test
     public void addUtilStop() throws Exception {
         mTestRxPresenter.attachView(mTestView);
-        mTestRxPresenter.addUtilStop(mSubscription);
-        assertThat(mSubscription.isUnsubscribed()).isFalse();
+        mTestRxPresenter.addUtilStop(mDisposable);
+        assertThat(mDisposable.isDisposed()).isFalse();
         mTestRxPresenter.detachView();
-        assertThat(mSubscription.isUnsubscribed()).isTrue();
+        assertThat(mDisposable.isDisposed()).isTrue();
     }
 
     @Test
     public void addUtilDestroy() throws Exception {
         mTestRxPresenter.attachView(mTestView);
-        mTestRxPresenter.addUtilDestroy(mSubscription);
-        assertThat(mSubscription.isUnsubscribed()).isFalse();
+        mTestRxPresenter.addUtilDestroy(mDisposable);
+        assertThat(mDisposable.isDisposed()).isFalse();
         mTestRxPresenter.detachView();
         mTestRxPresenter.onDestroy();
-        assertThat(mSubscription.isUnsubscribed()).isTrue();
+        assertThat(mDisposable.isDisposed()).isTrue();
     }
 
     @Test
     public void remove() throws Exception {
         mTestRxPresenter.attachView(mTestView);
-        mTestRxPresenter.addUtilStop(mSubscription);
-        assertThat(mSubscription.isUnsubscribed()).isFalse();
-        mTestRxPresenter.remove(mSubscription);
+        mTestRxPresenter.addUtilStop(mDisposable);
+        assertThat(mDisposable.isDisposed()).isFalse();
+        mTestRxPresenter.remove(mDisposable);
         mTestRxPresenter.detachView();
-        assertThat(mSubscription.isUnsubscribed()).isTrue();
+        assertThat(mDisposable.isDisposed()).isTrue();
     }
 }
