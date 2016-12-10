@@ -32,7 +32,7 @@ dependencies {
     androidTestCompile "com.android.support:appcompat-v7:$rootProject.ext.androidSupportSdkVersion"
     androidTestCompile "junit:junit:$rootProject.ext.junitVersion"
     androidTestCompile "org.mockito:mockito-core:$rootProject.ext.mockitoVersion"
-    androidTestCompile "com.github.piasy:dexmaker-mockito:$rootProject.ext.dexMakerVersion"
+    androidTestCompile "com.linkedin.dexmaker:dexmaker-mockito:$rootProject.ext.dexMakerVersion"
     androidTestCompile "com.android.support.test:rules:$rootProject.ext.testSupportLibVersion"
     androidTestCompile "com.android.support.test:runner:$rootProject.ext.testSupportLibVersion"
     androidTestCompile "com.azimolabs.conditionwatcher:conditionwatcher:$rootProject.ext.conditionWatcherVersion"
