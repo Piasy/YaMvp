@@ -1,6 +1,5 @@
 package com.github.piasy.yamvp.example;
 
-import com.github.piasy.yamvp.dagger2.BaseComponent;
 import dagger.Component;
 
 /**
@@ -8,6 +7,6 @@ import dagger.Component;
  */
 
 @Component
-interface MainComponent extends BaseComponent<MainView, MainPresenter> {
+interface MainComponent {
     void inject(MainFragment fragment);
 }

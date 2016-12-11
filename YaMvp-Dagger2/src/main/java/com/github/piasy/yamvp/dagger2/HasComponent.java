@@ -32,7 +32,7 @@ package com.github.piasy.yamvp.dagger2;
  *
  * @param <C> the {@link dagger.Component} type that client holds.
  */
-public interface HasComponent<C extends BaseComponent> {
+public interface HasComponent<C> {
 
     /**
      * Get the {@link dagger.Component} instance.

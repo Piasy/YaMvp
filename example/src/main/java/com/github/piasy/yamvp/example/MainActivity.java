@@ -4,7 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import com.github.piasy.yamvp.dagger2.YaMvpDiActivity;
 
-public class MainActivity extends YaMvpDiActivity<MainView, MainPresenter, MainComponent> {
+public class MainActivity extends YaMvpDiActivity<MainComponent> {
 
     private static final String MAIN_FRAGMENT = "MainFragment";
     private MainComponent mMainComponent;
@@ -24,14 +24,14 @@ public class MainActivity extends YaMvpDiActivity<MainView, MainPresenter, MainC
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.d("RetainInstance", "MainActivity#onDestroy");
+    protected void initializeDi() {
+        mMainComponent = DaggerMainComponent.create();
     }
 
     @Override
-    protected void initializeDi() {
-        mMainComponent = DaggerMainComponent.create();
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.d("RetainInstance", "MainActivity#onDestroy");
     }
 
     @Override
