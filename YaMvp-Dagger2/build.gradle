@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.ofg.uptodate'
 apply from: "https://raw.githubusercontent.com/Piasy/BintrayUploadScript/master/bintray.gradle"
 
 android {

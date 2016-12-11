@@ -9,6 +9,7 @@ buildscript {
         classpath 'me.tatarka:gradle-retrolambda:3.3.0'
         classpath 'me.tatarka.retrolambda.projectlombok:lombok.ast:0.2.3.a2'
 
+        classpath 'com.ofg:uptodate-gradle-plugin:1.6.2'
         classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.1'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.5'
         classpath 'com.dicedmelon.gradle:jacoco-android:0.1.1'
@@ -57,7 +58,6 @@ ext {
     testSupportLibVersion = '0.5'
     conditionWatcherVersion = '0.1'
 
-    rxjavaVersion = '1.2.1'
-    rxjava2Version = '2.0.0'
-    daggerVersion = '2.6.1'
+    rxjava2Version = '2.0.2'
+    daggerVersion = '2.8'
 }
