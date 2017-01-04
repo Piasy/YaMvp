@@ -29,7 +29,7 @@ The core MVP part, only 3 classes, less than 100 lines code.
 + YaViewDelegate: Composition over inheritance
 
 ``` gradle
-compile 'com.github.piasy:YaMvp:1.3.0'
+compile 'com.github.piasy:YaMvp:1.3.1'
 ```
 
 ### YaMvp-Rx
@@ -37,7 +37,7 @@ compile 'com.github.piasy:YaMvp:1.3.0'
 RxJava Subscription management.
 
 ``` gradle
-compile 'com.github.piasy:YaMvp-Rx:1.3.0'
+compile 'com.github.piasy:YaMvp-Rx:1.3.1'
 ```
 
 + YaRxDelegate: Composition over inheritance
@@ -47,7 +47,7 @@ compile 'com.github.piasy:YaMvp-Rx:1.3.0'
 If you want inheritance, here you are.
 
 ``` gradle
-compile 'com.github.piasy:YaMvp-Component:1.3.0'
+compile 'com.github.piasy:YaMvp-Component:1.3.1'
 ```
 
 ### YaMvp-Dagger2
@@ -55,7 +55,7 @@ compile 'com.github.piasy:YaMvp-Component:1.3.0'
 And if you want Dagger2 integrated too, here you are.
 
 ``` gradle
-compile 'com.github.piasy:YaMvp-Dagger2:1.3.0'
+compile 'com.github.piasy:YaMvp-Dagger2:1.3.1'
 ```
 
 ## Test code showcase
