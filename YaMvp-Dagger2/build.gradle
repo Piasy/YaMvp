@@ -26,4 +26,5 @@ dependencies {
     compile project(':YaMvp-Component')
     compile "com.android.support:appcompat-v7:$rootProject.ext.androidSupportSdkVersion"
     compile "com.google.dagger:dagger:$rootProject.ext.daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
 }
